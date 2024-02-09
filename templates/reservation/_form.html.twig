@@ -1,0 +1,23 @@
+<div class="needs-validation" novalidate>
+    {{ form_start(form) }}
+    <div class="row g-3">
+
+        <div class="col-sm-6">
+            {{ form_row(form.date_reservation) }}
+        </div>
+
+        <div class="col-sm-6">
+            {{ form_row(form.heure_reservation) }}
+        </div>
+
+        <div class="col-12">
+            {{ form_row(form.id_instructeur) }}
+        </div>
+
+    </div>
+
+    <hr class="my-4">
+    <button class="w-100 btn btn-outline-secondary btn-lg" type="submit">Envoyer</button>
+    {{ form_end(form) }}
+
+</div>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>BackEnd</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="" />
+    <!-- Favicon icon -->
+    <link rel="icon" href="{{asset('backEnd/assets/images/favicon.ico')}}" type="image/x-icon">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="{{asset('backEnd/assets/css/style.css')}}">
+
+
+
+</head>
+
+<body class="">
+    <!-- [ Pre-loader ] start -->
+    <div class="loader-bg">
+        <div class="loader-track">
+            <div class="loader-fill"></div>
+        </div>
+    </div>
+    <!-- [ Pre-loader ] End -->
+    <!-- [ navigation menu ] start -->
+    <nav class="pcoded-navbar menu-light ">
+        <div class="navbar-wrapper  ">
+            <div class="navbar-content scroll-div ">
+
+                <div class="">
+                    <div class="main-menu-header">
+                        <img class="img-radius" src="{{asset('backEnd/assets/images/user2.png')}}"
+                            alt="User-Profile-Image">
+                        <div class="user-details">
+                            <div id="more-details">{{app.user.firstName}} <i class="fa fa-caret-down"></i></div>
+                        </div>
+                    </div>
+                    <div class="collapse" id="nav-user-link">
+                        <ul class="list-unstyled">
+                            <li class="list-group-item"><a href="#"><i class="feather icon-user m-r-5"></i>Mon
+                                    profil</a></li>
+                            <li class="list-group-item"><a href="{{path('app_logout')}}"><i
+                                        class="feather icon-log-out m-r-5"></i>Deconnexion</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                {% if app.user.roles['0']=="ROLE_ADMIN"%}
+                {{include('partition/menuAdmin.html.twig')}}
+                {% elseif app.user.roles['0']=="ROLE_INSTRUCTEUR"%}
+                {{include('partition/menuInstructeur.html.twig')}}
+                {% endif %}
+
+
+
+            </div>
+        </div>
+    </nav>
+    <!-- [ navigation menu ] end -->
+    <!-- [ Header ] start -->
+    <header class="navbar pcoded-header navbar-expand-lg navbar-light header-blue"
+        style="background-color:cadetblue; border-radius: 5px;">
+
+
+        <div class="m-header">
+            <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+            <a href="#!" class="b-brand">
+                <!-- ========   change your logo hear   ============ -->
+                <a class="blog-header-logo text-body-emphasis text-decoration-none" href="#">Auto-ecole A</a>
+            </a>
+            <a href="#!" class="mob-toggler">
+                <i class="feather icon-more-vertical"></i>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse">
+
+            <ul class="navbar-nav ml-auto">
+                <li>
+                    <div class="dropdown drp-user">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="feather icon-user" style="font-size: 24px;"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right profile-notification">
+                            <div class="pro-head">
+                                <img src="{{asset('backEnd/assets/images/user2.png')}}" class="img-radius"
+                                    alt="User-Profile-Image">
+                                <span>{{app.user.firstName}} {{app.user.lastName}}</span>
+
+                            </div>
+                            <ul class="pro-body">
+                                <li><a href="" class="dropdown-item"><i class="feather icon-user"></i>
+                                        Profile</a></li>
+                                <li><a href="" class="dropdown-item"><i class="feather icon-mail"></i>
+                                        Mes Messages</a></li>
+                                <li><a href="{{path('app_logout')}}" class="dropdown-item"><i
+                                            class="feather icon-lock"></i>
+                                        Deconnexion</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+    </header>
+    <!-- [ Header ] end -->
+
+
+
+    <!-- [ Main Content ] start -->
+    {% block body %}{% endblock %}
+
+
+    <!-- Required Js -->
+    <script src="{{asset('backEnd/assets/js/vendor-all.min.js')}}"></script>
+    <script src="{{asset('backEnd/assets/js/plugins/bootstrap.min.js')}}"></script>
+    <!-- <script src="{{asset('backEnd/assets/js/ripple.js')}}"></script> -->
+    <script src="{{asset('backEnd/assets/js/pcoded.min.js')}}"></script>
+
+    <!-- Apex Chart -->
+    <script src="{{asset('backEnd/assets/js/plugins/apexcharts.min.js')}}"></script>
+
+
+    <!-- custom-chart js -->
+    <script src="{{asset('backEnd/assets/js/pages/dashboard-main.js')}}"></script>
+</body>
+
+</html>

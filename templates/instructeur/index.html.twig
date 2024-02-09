@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Instructeur index{% endblock %}
+
+{% block body %}
+<!-- [ stiped-table ] start -->
+<div class="pcoded-main-container">
+    <div class="pcoded-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">Tableau de bord</h5>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href=""><i class="feather icon-home"></i></a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="#!">Liste des instructeurs</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    {% for message in app.flashes('alertCreate') %}
+                    <div class="alert alert-info alert-dismissible fade show">
+                        <strong> <i class="fa fa-circle-exclamation"></i> Info! </strong>
+                        {{message}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></span>
+                    </div>
+                    {% endfor%}
+                    <div class="card-header">
+                        <h5> Table</h5>
+                        <span class="d-block m-t-5">Liste instructeur</span>
+                    </div>
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nom</th>
+                                        <th>Prenom</th>
+                                        <th>Email</th>
+                                        <th>Telephone</th>
+                                        <th>Date Add</th>
+                                        <th>Status</th>
+                                        <th>actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% set count=1 %}
+                                    {% for instructeur in instructeurs %}
+                                    <tr>
+                                        <td>{{ count }}</td>
+                                        <td>{{ instructeur.nom }}</td>
+                                        <td>{{ instructeur.prenom }}</td>
+                                        <td>{{ instructeur.email }}</td>
+                                        <td>{{ instructeur.telephone }}</td>
+                                        <td>{{ instructeur.createdAt ? instructeur.createdAt|date('Y-m-d H:i:s') : '' }}
+                                        </td>
+                                        <td>{{ instructeur.status }}</td>
+                                        <td>
+                                            <a
+                                                href="{{ path('app_instructeur_edit', {'id': instructeur.id}) }}">edit</a>
+                                        </td>
+                                    </tr>
+                                    {% set count=count+1 %}
+                                    {% else %}
+                                    <tr>
+                                        <td colspan="8">Liste vide</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

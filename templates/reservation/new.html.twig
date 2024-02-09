@@ -1,0 +1,63 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}New Reservation{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <main>
+        <div class="py-1 text-center">
+            <h2>Reservation</h2>
+            <p class="lead">Reservation Auto Ecole permet aux gérants, moniteurs et élèves de planifier
+                les heures de conduite</p>
+        </div>
+        {% for message in app.flashes('alertCreate') %}
+        <div class="alert alert-warning alert-dismissible fade show">
+            <strong> <i class="fa fa-circle-exclamation"></i> Info! </strong>
+            {{message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></span>
+        </div>
+        {% endfor%}
+        <div class="row g-5">
+            <div class="col-md-2 col-lg-2"></div>
+            <div class="col-md-2 col-lg-3">
+                <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="">
+                    <a href="/"
+                        class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                        <svg class="bi pe-none me-2" width="40" height="32">
+                            <use xlink:href="#bootstrap" />
+                        </svg>
+                        <span class="fs-4">Menu</span>
+                    </a>
+                    <hr>
+                    <ul class="nav nav-pills flex-column mb-auto">
+                        <li class="nav-item">
+                            <a href="{{path('app_reservation_new')}}" class="nav-link active" aria-current="page">
+                                <svg class="bi pe-none me-2" width="16" height="16">
+                                    <use xlink:href="#home" />
+                                </svg>
+                                Réserver
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{path('app_reservation_index')}}" class="nav-link link-body-emphasis">
+                                <svg class="bi pe-none me-2" width="16" height="16">
+                                    <use xlink:href="#speedometer2" />
+                                </svg>
+                                Liste
+                            </a>
+                        </li>
+
+
+                    </ul>
+                    <hr>
+                </div>
+
+            </div>
+            <div class="col-md-2 col-lg-6">
+                {{ include('reservation/_form.html.twig') }}
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}

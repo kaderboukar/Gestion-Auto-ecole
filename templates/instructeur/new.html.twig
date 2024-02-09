@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Instructeur{% endblock %}
+
+{% block body %}
+
+<div class="pcoded-main-container">
+    <div class="pcoded-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">Tableau de bord</h5>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href=""><i class="feather icon-home"></i></a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="#!">Liste des instructeurs</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="container">
+                    <main>
+                        <div class="py-5 text-center">
+
+                            <h2>{% if edit==0 %}Ajouter{% else %} Modifier {% endif
+                                %} un instructeur</h2>
+                            <p class="lead">Veuillez remplir les champs obligatoire
+                            </p>
+                        </div>
+                        {% for message in app.flashes('alertCreate') %}
+                        <div class="alert alert-warning alert-dismissible fade show">
+                            <strong> <i class="fa fa-circle-exclamation"></i> Info! </strong>
+                            {{message}}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></span>
+                        </div>
+                        {% endfor%}
+                        <div class="row g-5">
+                            <div class="col-md-1 col-lg-2"></div>
+                            <div class="col-md-7 col-lg-8">
+                                {{ include('instructeur/_form.html.twig') }}
+                            </div>
+                        </div>
+                    </main>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
