@@ -5,7 +5,7 @@ Ce projet est une application Symfony développée pour une auto-école, permett
 **Installation**
 
 Pour installer et exécuter ce projet localement, suivez ces étapes :
-**---Cloner le projet :** git clone https://github.com/VOTRE_UTILISATEUR_GITHUB/nom-du-projet.git
+**---Cloner le projet :** git clone git@github.com:kaderboukar/Gestion-Auto-ecole.git
 **---Installer les dépendances :** composer install
 **---Configurer la base de données :**
 Copiez le fichier .env.example en .env et configurez votre base de données.
